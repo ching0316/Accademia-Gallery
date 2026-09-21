@@ -429,7 +429,7 @@
                 <!-- 5 Essential Takeaways -->
                 <div class="carbon-card p-4 rounded-2xl border border-white/10 space-y-3">
                     <h2 class="text-[19px] font-bold text-metal flex items-center gap-2">
-                        <i data-lucide="headphones" class="w-4 h-4 text-ferrari-yellow"></i> 🎧 最後 30 秒｜整座美術館怎麼記
+                        <i data-lucide="headphones" class="w-4 h-4 text-ferrari-yellow"></i> 整座美術館重點
                     </h2>
                     
                     <div class="space-y-2 text-[14px]">
@@ -472,7 +472,7 @@
                         <span id="player-room" class="text-[13px] font-tech bg-ferrari-carbon border border-ferrari-red text-white px-1 rounded font-bold">T1 圓頂</span>
                         <h4 id="player-title" class="text-[14px] font-bold text-white truncate">07｜米開朗基羅《大衛》</h4>
                     </div>
-                    <p id="player-artist" class="text-[13px] text-gray-400 truncate">David - 約 90 秒</p>
+                    <p id="player-artist" class="text-[13px] text-gray-400 truncate">David</p>
                     <div class="w-full bg-black/60 rounded-full h-1 mt-1 overflow-hidden">
                         <div id="audio-progress-bar" class="bg-gradient-to-r from-ferrari-yellow to-ferrari-red h-full w-0 transition-all duration-300"></div>
                     </div>
@@ -572,9 +572,9 @@
         /* ACCADEMIA GALLERY ARTWORKS DATABASE */
         const artworksData = [
             {
-                id: '01-young-slave',
-                title: '01｜米開朗基羅《年輕的奴隸》',
-                artist: 'Giovane schiavo',
+                id: 'young-slave',
+                title: '《年輕的奴隸》',
+                artist: '米開朗基羅',
                 year: '1525–1530',
                 section: 'P',
                 room: '奴隸長廊',
@@ -596,9 +596,9 @@
                 ]
             },
             {
-                id: '02-awakening-slave',
-                title: '02｜米開朗基羅《覺醒的奴隸》',
-                artist: 'Schiavo che si desta',
+                id: 'awakening-slave',
+                title: '《覺醒的奴隸》',
+                artist: '米開朗基羅',
                 year: '1525–1530',
                 section: 'P',
                 room: '奴隸長廊',
@@ -619,9 +619,9 @@
                 ]
             },
             {
-                id: '03-bearded-slave',
-                title: '03｜米開朗基羅《鬍鬚奴隸》',
-                artist: 'Schiavo barbuto',
+                id: 'bearded-slave',
+                title: '《鬍鬚奴隸》',
+                artist: '米開朗基羅',
                 year: '1525–1530',
                 section: 'P',
                 room: '奴隸長廊',
@@ -640,9 +640,9 @@
                 ]
             },
             {
-                id: '04-atlas-slave',
-                title: '04｜米開朗基羅《阿特拉斯奴隸》',
-                artist: 'Atlante',
+                id: 'atlas-slave',
+                title: '《阿特拉斯奴隸》',
+                artist: '米開朗基羅',
                 year: '1525–1530',
                 section: 'P',
                 room: '奴隸長廊',
@@ -663,9 +663,9 @@
                 ]
             },
             {
-                id: '05-st-matthew',
-                title: '05｜米開朗基羅《聖馬太》',
-                artist: 'San Matteo',
+                id: 'st-matthew',
+                title: '《聖馬太》',
+                artist: '米開朗基羅',
                 year: '1506',
                 section: 'P',
                 room: '奴隸長廊盡頭',
@@ -686,9 +686,9 @@
                 ]
             },
             {
-                id: '06-pieta-palestrina',
-                title: '06｜米開朗基羅《帕萊斯特里納的聖母哀悼》',
-                artist: 'Pietà di Palestrina',
+                id: 'pieta-palestrina',
+                title: '《帕萊斯特里納的聖母哀悼》',
+                artist: '米開朗基羅',
                 year: 'c. 1555',
                 section: 'P',
                 room: '大衛長廊',
@@ -708,9 +708,9 @@
                 ]
             },
             {
-                id: '07-david',
-                title: '⭐ 07｜米開朗基羅《大衛》正面觀看',
-                artist: 'David',
+                id: 'david',
+                title: '《大衛》',
+                artist: '米開朗基羅',
                 year: '1501–1504',
                 section: 'T',
                 room: '大衛圓頂展廳',
@@ -734,9 +734,9 @@
                 ]
             },
             {
-                id: '08-david-profile',
-                title: '08｜《大衛》側面觀看與視角探討',
-                artist: 'David (側面觀看)',
+                id: 'david-profile',
+                title: '《大衛》側面觀看與視角探討',
+                artist: '米開朗基羅',
                 year: '1501–1504',
                 section: 'T',
                 room: '大衛圓頂展廳',
@@ -757,9 +757,9 @@
                 ]
             },
             {
-                id: '09-giambologna-sabine',
-                title: '09｜詹博洛尼亞《劫掠薩賓婦女》',
-                artist: 'Ratto delle Sabine',
+                id: 'giambologna-sabine',
+                title: '《劫掠薩賓婦女》',
+                artist: '詹博洛尼亞',
                 year: '1582',
                 section: 'G',
                 room: '巨人廳 (Sala del Colosso)',
@@ -779,9 +779,9 @@
                 ]
             },
             {
-                id: '10-botticelli-madonna',
-                title: '10｜波提切利《聖母子與幼年聖約翰及兩位天使》',
-                artist: 'Madonna col Bambino...',
+                id: 'botticelli-madonna',
+                title: '《聖母子與幼年聖約翰及兩位天使》',
+                artist: '波提切利',
                 year: 'c. 1468',
                 section: 'G',
                 room: '巨人廳',
@@ -799,9 +799,9 @@
                 ]
             },
             {
-                id: '11-giotto-shepherds',
-                title: '11｜喬托《牧羊人與羊群》',
-                artist: 'Pastori e greggi',
+                id: 'giotto-shepherds',
+                title: '《牧羊人與羊群》',
+                artist: '喬托',
                 year: '14 Century',
                 section: 'G',
                 room: '13-14 世紀繪畫館',
@@ -819,9 +819,9 @@
                 ]
             },
             {
-                id: '12-taddeo-gaddi',
-                title: '12｜塔代奧・加迪《十字架刑》',
-                artist: 'Crocifissione',
+                id: 'taddeo-gaddi',
+                title: '《十字架刑》',
+                artist: '塔代奧・加迪',
                 year: 'c. 1355',
                 section: 'G',
                 room: '13-14 世紀繪畫館',
@@ -839,8 +839,8 @@
                 ]
             },
             {
-                id: '13-giovanni-milano',
-                title: '13｜喬瓦尼・達・米蘭與奧爾卡尼家族作品',
+                id: 'giovanni-milano',
+                title: '喬瓦尼・達・米蘭與奧爾卡尼家族作品',
                 artist: 'Giovanni da Milano & Orcagna',
                 year: '14 Century',
                 section: 'G',
@@ -860,9 +860,9 @@
                 ]
             },
             {
-                id: '14-lorenzo-monaco',
-                title: '14｜洛倫佐・摩納哥《天使報喜》',
-                artist: 'Annunciazione',
+                id: 'lorenzo-monaco',
+                title: '洛倫佐・摩納哥《天使報喜》',
+                artist: '洛倫佐・摩納哥',
                 year: 'c. 1410-1415',
                 section: 'M',
                 room: '二樓哥德式展廳',
@@ -882,8 +882,8 @@
                 ]
             },
             {
-                id: '15-15th-paintings',
-                title: '15｜15 世紀佛羅倫斯繪畫區',
+                id: '15th-paintings',
+                title: '15 世紀佛羅倫斯繪畫區',
                 artist: '15th Century Florentine Masters',
                 year: '15 Century',
                 section: 'M',
@@ -903,9 +903,9 @@
                 ]
             },
             {
-                id: '16-bartolini-gipsoteca',
-                title: '16｜洛倫佐・巴托里尼石膏雕塑館',
-                artist: 'Gipsoteca Bartolini',
+                id: 'bartolini-gipsoteca',
+                title: '洛倫佐・巴托里尼石膏雕塑館',
+                artist: '洛倫佐・巴托里尼',
                 year: '19 Century',
                 section: 'M',
                 room: '石膏雕塑館',
@@ -923,8 +923,8 @@
                 ]
             },
             {
-                id: '17-medici-instruments',
-                title: '17｜美第奇樂器收藏館',
+                id: 'medici-instruments',
+                title: '美第奇樂器收藏館',
                 artist: 'Strumenti musicali',
                 year: 'Medici & Lorraine Collection',
                 section: 'M',

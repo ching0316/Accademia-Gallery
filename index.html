@@ -973,6 +973,7 @@
         /* Speech Synthesis States */
         let isPlaying = false;
         let speechSynth = window.speechSynthesis;
+        let speechProgressTimer = null;
         let speechUtterance = null;
         let playbackSpeed = 1.0;
         let playProgressPercent = 0;

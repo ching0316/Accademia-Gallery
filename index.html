@@ -238,7 +238,7 @@
                             <span class="inline-block px-2 py-0.5 rounded bg-ferrari-carbon border border-ferrari-red text-ferrari-yellow text-[13px] font-extrabold uppercase tracking-widest mb-1 shadow-sm">
                                 ACCADEMIA GUIDED TOUR
                             </span>
-                            <h1 class="text-[20px] font-black text-metal tracking-tight">米開朗基羅《大衛像》與名作導覽</h1>
+                            <h1 class="text-[20px] font-black text-metal tracking-tight">學院美術館經典名作導覽</h1>
                             <p class="text-[13px] text-gray-400 mt-1">參觀順序：奴隸長廊 →《大衛像》→ 折返 → 其他展區</p>
                         </div>
                         <div class="text-center bg-black/50 p-2 rounded-xl border border-white/10">
@@ -557,7 +557,7 @@
 
                 <div class="space-y-2">
                     <h3 class="text-[16px] font-bold text-ferrari-gold flex items-center gap-1.5 border-b border-white/10 pb-1.5">
-                        <i data-lucide="file-text" class="w-4 h-4 text-ferrari-red"></i> 導覽解說文本
+                        <i data-lucide="file-text" class="w-4 h-4 text-ferrari-red"></i> 導覽解說與賞析重點
                     </h3>
                     <div id="modal-description" class="text-[15px] leading-relaxed text-gray-200 whitespace-pre-line space-y-2">
                     </div>
@@ -565,7 +565,7 @@
 
                 <div class="p-3 bg-black/40 rounded-xl border border-white/10 space-y-1.5">
                     <span class="text-[15px] font-tech font-bold text-ferrari-gold flex items-center gap-1">
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 現場欣賞重點 (Key Highlights)
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 現場必看細節
                     </span>
                     <ul id="modal-highlights" class="text-[14px] text-gray-300 space-y-1 list-disc list-inside">
                     </ul>
@@ -984,6 +984,7 @@
             updatePlayerBarUI();
             initInteractiveMapEvents();
             if (currentArtwork) {
+                switchMapFloor(currentArtwork.floor);
                 highlightRoomOnMap(currentArtwork.roomCode);
             }
         };
@@ -1238,11 +1239,13 @@
             applyMapTransform();
         }
 
+        /* 順暢單手指拖曳滑動地圖機制 */
         function initInteractiveMapEvents() {
-            ['1f', '2f'].forEach(floor => {
+            ['2f', '1f'].forEach(floor => {
                 const container = document.getElementById(`map-graphic-${floor}`);
                 if (!container) return;
 
+                // 滑鼠拖曳 (Mouse Events)
                 container.addEventListener('mousedown', (e) => {
                     isMapDragging = true;
                     mapDragStartX = e.clientX - mapPanX;
@@ -1259,7 +1262,57 @@
                 window.addEventListener('mouseup', () => {
                     isMapDragging = false;
                 });
+
+                // 單手指觸控拖曳 (Single-finger Touch Swiping)
+                let initialTouchDistance = null;
+
+                container.addEventListener('touchstart', (e) => {
+                    if (e.touches.length === 1) {
+                        isMapDragging = true;
+                        mapDragStartX = e.touches[0].clientX - mapPanX;
+                        mapDragStartY = e.touches[0].clientY - mapPanY;
+                    } else if (e.touches.length === 2) {
+                        isMapDragging = false;
+                        initialTouchDistance = Math.hypot(
+                            e.touches[0].clientX - e.touches[1].clientX,
+                            e.touches[0].clientY - e.touches[1].clientY
+                        );
+                    }
+                }, { passive: true });
+
+                container.addEventListener('touchmove', (e) => {
+                    if (isMapDragging && e.touches.length === 1) {
+                        e.preventDefault(); // 阻止背景滾動，達成順暢單指視窗內左右/上下滑動
+                        mapPanX = e.touches[0].clientX - mapDragStartX;
+                        mapPanY = e.touches[0].clientY - mapDragStartY;
+                        applyMapTransform();
+                    } else if (e.touches.length === 2 && initialTouchDistance) {
+                        e.preventDefault();
+                        const dist = Math.hypot(
+                            e.touches[0].clientX - e.touches[1].clientX,
+                            e.touches[0].clientY - e.touches[1].clientY
+                        );
+                        const delta = (dist - initialTouchDistance) * 0.005;
+                        mapScale = Math.min(Math.max(1.0, mapScale + delta), 3.5);
+                        initialTouchDistance = dist;
+                        applyMapTransform();
+                    }
+                }, { passive: false });
+
+                container.addEventListener('touchend', () => {
+                    isMapDragging = false;
+                    initialTouchDistance = null;
+                });
+
+                // 滑鼠滾輪縮放
+                container.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    const delta = e.deltaY < 0 ? 0.2 : -0.2;
+                    zoomMap(delta);
+                }, { passive: false });
             });
+
+            applyMapTransform();
         }
 
         /* MODAL & AUDIO PLAYER FUNCTIONS */

@@ -477,9 +477,9 @@
                 <div class="min-w-0 flex-1">
                     <div class="flex items-center gap-1.5">
                         <span id="player-room" class="text-[14px] font-tech bg-ferrari-carbon border border-ferrari-red text-white px-1 rounded font-bold">T1 圓頂</span>
-                        <h4 id="player-title" class="text-[15px] font-bold text-white truncate">07｜米開朗基羅《大衛像》</h4>
+                        <h4 id="player-title" class="text-[15px] font-bold text-white truncate">《大衛像》</h4>
                     </div>
-                    <p id="player-artist" class="text-[14px] text-gray-400 truncate">David</p>
+                    <p id="player-artist" class="text-[14px] text-gray-400 truncate">米開朗基羅</p>
                     <div class="w-full bg-black/60 rounded-full h-1 mt-1 overflow-hidden">
                         <div id="audio-progress-bar" class="bg-gradient-to-r from-ferrari-yellow to-ferrari-red h-full w-0 transition-all duration-300"></div>
                     </div>
@@ -526,9 +526,9 @@
                 </div>
 
                 <div class="space-y-1">
-                    <h2 id="modal-title" class="text-[24px] font-tech text-white font-bold leading-snug">07｜米開朗基羅《大衛像》</h2>
+                    <h2 id="modal-title" class="text-[24px] font-tech text-white font-bold leading-snug">《大衛像》</h2>
                     <div class="flex items-center gap-2 text-[16px] font-tech text-ferrari-gold">
-                        <span id="modal-artist">David</span>
+                        <span id="modal-artist">米開朗基羅</span>
                         <span>·</span>
                         <span id="modal-year" class="text-gray-400">1501–1504</span>
                     </div>
@@ -1082,13 +1082,13 @@
                     </div>
                     <div class="flex-1 min-w-0 space-y-1">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-[15px] font-bold text-white truncate">${item.title}</h3>
+                            <h3 class="text-[16px] font-bold text-white truncate">${item.title}</h3>
                             <button onclick="event.stopPropagation(); toggleFavorite('${item.id}')" class="text-gray-400 hover:text-ferrari-yellow p-1">
                                 <i data-lucide="bookmark" class="w-3.5 h-3.5 ${isFav ? 'text-ferrari-yellow fill-ferrari-yellow' : ''}"></i>
                             </button>
                         </div>
-                        <p class="text-[13px] text-gray-400 truncate">${item.artist}</p>
-                        <div class="flex items-center gap-2 text-[12px] text-gray-500 font-tech">
+                        <p class="text-[14px] text-gray-400 truncate">${item.artist}</p>
+                        <div class="flex items-center gap-2 text-[13px] text-gray-500 font-tech">
                             <span class="text-ferrari-gold font-bold">${item.room}</span>
                         </div>
                     </div>
